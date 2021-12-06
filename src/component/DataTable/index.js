@@ -37,15 +37,34 @@ const rows = [
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
+const dataColumn = [{field: 'id', headerName: 'ID', width: 10},{field: 'Club', headerName: 'Club', width:70}];
+
+const insertColumn = (data) => {
+    const myData = data.year;
+    for(let year in myData){
+        dataColumn.push({field: myData[year]['season'], headerName: myData[year]['season'], width: 5});
+    }
+    console.log(dataColumn);
+}
+
+const dataRow = [];
+
+const insertRow = (data) => {
+    const myData = data.win;
+    console.log(Object.keys(data))
+}
+
 const DataTable = (props) => {
     const tableData = props.data;
-    console.log(tableData)
+    // console.log(tableData)
+    insertColumn(tableData);
+    insertRow(tableData);
     return (
         <DataGrid
             rows={rows}
-            columns={columns}
+            columns={dataColumn}
             pageSize={5}
-            rowsPerPageOptions={[5]}
+            rowsPerPageOptions={[20]}
             checkboxSelection
         />
     );

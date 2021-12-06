@@ -4,6 +4,7 @@ import {ListItemButton} from "@mui/material";
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import axios from "axios";
+import {connect} from "react-redux";
 
 const client = axios.create({
     baseURL: "http://127.0.0.1:8000/scrapeStart/"
@@ -121,6 +122,18 @@ const SideBar = ({childToParent}) => {
             <Divider />
         </Box>
     );
+}
+
+const mapStateToProps = state => {
+    return {
+        sideRoute: state.message
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        ButtonChange: () => dispatch({type: 'Message change'})
+    }
 }
 
 export default SideBar

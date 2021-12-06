@@ -4,7 +4,7 @@ import DataTable from "../DataTable";
 
 const Content = (props) => {
     return(
-        <Container sx={{marginTop: 20}}>
+        <Container>
             <DataTable data={props.data}/>
         </Container>
     )
