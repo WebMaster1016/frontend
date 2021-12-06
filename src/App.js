@@ -14,20 +14,16 @@ const theme = createTheme({
     }
 })
 function App() {
-    const [dataP, setDataP] = useState('');
-    const childToParent = (childData) => {
-        setDataP(childData.data);
-    }
     return (
         <ThemeProvider theme={theme}>
             <div className="App">
                 <Header />
                 <Grid container>
                     <Grid item xs={2} md={2}>
-                        <SideBar childToParent={childToParent}/>
+                        <SideBar/>
                     </Grid>
                     <Grid item xs={10} md={10}>
-                        <Content data={dataP}/>
+                        <Content/>
                     </Grid>
                 </Grid>
             </div>

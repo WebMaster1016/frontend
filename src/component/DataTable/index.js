@@ -37,21 +37,27 @@ const rows = [
     { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
 ];
 
-const dataColumn = [{field: 'id', headerName: 'ID', width: 10},{field: 'Club', headerName: 'Club', width:70}];
+const dataColumn = [{field: 'id', headerName: 'ID', width: 10},{field: 'club', headerName: 'Club', width:150}];
 
 const insertColumn = (data) => {
     const myData = data.year;
     for(let year in myData){
-        dataColumn.push({field: myData[year]['season'], headerName: myData[year]['season'], width: 5});
+        dataColumn.push({field: myData[year]['season'], headerName: myData[year]['season'], width: 90});
     }
-    console.log(dataColumn);
+    console.log(data['club']);
 }
 
 const dataRow = [];
 
 const insertRow = (data) => {
-    const myData = data.win;
-    console.log(Object.keys(data))
+    dataRow.shift();
+    const keycode = Object.keys(data);
+    // const rowData = data[keycode[0]];
+    const rowData = data['club'];
+
+    for(let row in rowData){
+        dataRow.push({id: row, club: rowData[row]['club']})
+    }
 }
 
 const DataTable = (props) => {
@@ -61,9 +67,9 @@ const DataTable = (props) => {
     insertRow(tableData);
     return (
         <DataGrid
-            rows={rows}
+            rows={dataRow}
             columns={dataColumn}
-            pageSize={5}
+            pageSize={20}
             rowsPerPageOptions={[20]}
             checkboxSelection
         />

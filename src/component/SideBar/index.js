@@ -34,7 +34,7 @@ const shotsView = axios.create({
     baseURL: "http://127.0.0.1:8000/shotsView/"
 });
 
-const SideBar = ({childToParent}) => {
+const SideBar = ( props) => {
 
     const [post, setPost] = React.useState(null);
     async function getPost() {
@@ -46,41 +46,44 @@ const SideBar = ({childToParent}) => {
     async function win_scrape() {
         const response = await winView.get('/');
         // console.log(response);
-        childToParent({win: response});
+        // childToParent({win: response});
         setPost(response);
     }
 
     async function goal_scrape() {
         const response = await goalView.get('/');
         // console.log(response);
-        childToParent({goal: response});
+        // childToParent({goal: response});
         setPost(response);
     }
 
     async function shots_scrape() {
         const response = await shotsView.get('/');
         // console.log(response);
-        childToParent({shots: response});
+        // childToParent({shots: response});
         setPost(response);
         console.log(response)
     }
 
     async function win_view(){
         const response = await winView.get('/');
-        childToParent(response);
+        // childToParent(response);
         setPost(response);
+        props.routeChange('win', response);
     }
 
     async function goal_view(){
         const response = await goalView.get('/');
-        childToParent(response);
+        // childToParent(response);
         setPost(response);
+        props.routeChange('goal', response);
     }
 
     async function shots_view(){
         const response = await shotsView.get('/');
-        childToParent(response);
+        // childToParent(response);
         setPost(response);
+        props.routeChange('shots', response);
     }
 
     return (
@@ -126,14 +129,14 @@ const SideBar = ({childToParent}) => {
 
 const mapStateToProps = state => {
     return {
-        sideRoute: state.message
+        sideRoute: state.sideRoute
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        ButtonChange: () => dispatch({type: 'Message change'})
+        routeChange: (whe, data) => dispatch({type: 'routeChange', payload: {sideRoute: whe, data: data}})
     }
 }
 
-export default SideBar
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar)
