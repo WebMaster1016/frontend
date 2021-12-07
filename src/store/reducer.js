@@ -10,9 +10,6 @@ const reducer = (state=initialState, action) => {
       const myData = action.payload;
       newState.sideRoute = myData['sideRoute'];
       newState.data = myData['data']['data'];
-      console.log('________________');
-      console.log(myData['sideRoute']);
-      console.log(myData['data']['data']);
   }
   return newState;
 }

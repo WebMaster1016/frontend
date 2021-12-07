@@ -47,16 +47,24 @@ const insertColumn = (data) => {
     console.log(data['club']);
 }
 
-const dataRow = [];
+var dataRow = [];
 
 const insertRow = (data) => {
-    dataRow.shift();
+    dataRow = [];
     const keycode = Object.keys(data);
     // const rowData = data[keycode[0]];
     const rowData = data['club'];
-
+    const year = data['year'];
+    console.log("Total:");
+    console.log(rowData);
     for(let row in rowData){
-        dataRow.push({id: row, club: rowData[row]['club']})
+       // console.log("row::" + [rowData[row]]);
+        const m_data = {id: row, club: rowData[row]['club'], [rowData[row]]: 'data'};
+        for(let myYear in year){
+            m_data[year[myYear]] = 0;
+        }
+       // console.log(m_data);
+        dataRow.push(m_data);
     }
 }
 
@@ -72,6 +80,7 @@ const DataTable = (props) => {
             pageSize={20}
             rowsPerPageOptions={[20]}
             checkboxSelection
+
         />
     );
 }

@@ -34,6 +34,10 @@ const shotsView = axios.create({
     baseURL: "http://127.0.0.1:8000/shotsView/"
 });
 
+const predict = axios.create({
+    baseURL: "http://127.0.0.1:8000/predict/"
+});
+
 const SideBar = ( props) => {
 
     const [post, setPost] = React.useState(null);
@@ -86,6 +90,12 @@ const SideBar = ( props) => {
         props.routeChange('shots', response);
     }
 
+    async function win_predict(){
+        const response = await predict.get('/');
+        setPost(response);
+        props.routeChange('predict', response)
+    }
+
     return (
         <Box sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
             <nav aria-label="main mailbox folders">
@@ -114,10 +124,8 @@ const SideBar = ( props) => {
                 <Divider />
                 <List>
                     <ListItem>
-                        <ListItemButton>
-                            <ListItemButton>
-                                <ListItemText primary="Predict" sx={{textAlign: 'center'}} />
-                            </ListItemButton>
+                        <ListItemButton onClick={()=> win_predict()}>
+                            <ListItemText primary="Predict" sx={{textAlign: 'center'}} />
                         </ListItemButton>
                     </ListItem>
                 </List>
