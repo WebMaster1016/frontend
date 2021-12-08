@@ -10,9 +10,14 @@ import Content from "./component/Content";
 
 const theme = createTheme({
     palette: {
+        primary: {
+            main: "#029E74",
+            dark: "rgba(0,0,0,0.3)",
+        },
+    },
+    spacing: 4,
+});
 
-    }
-})
 function App() {
     return (
         <ThemeProvider theme={theme}>

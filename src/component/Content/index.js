@@ -1,33 +1,35 @@
 import React from "react";
+import {Grid} from "@mui/material";
 import {Container} from "@mui/material";
-import DataTable from "../DataTable";
 import {connect} from "react-redux";
+import ClubList from "./component/ClubList";
+import LineChart from "./component/LineChart";
 
 const Content = (props) => {
     const dataContent = () => {
         const m_data = props.data;
         console.log(m_data);
         if (props.sideRoute === 'win'){
-            const final_data = m_data['win'];
+            const final_data = m_data;
             return (
-                final_data.map((value)=>(
-                    <div>Season: {value['season']} Club: {value['club']} Win: {value['win']}</div>
-                ))
+                <Grid container paddingTop={10}>
+                    <Grid item xs={4} md={4}>
+                        <ClubList data={final_data} type={'win'}/>
+                    </Grid>
+                    <Grid item xs={8} md={8}>
+                        <LineChart />
+                    </Grid>
+                </Grid>
             )
         }else if(props.sideRoute === 'goal'){
             const final_data = m_data['goal'];
             return (
-                final_data.map((value)=>(
-                    <div>Season: {value['season']} Club: {value['club']} Goal: {value['goal']}</div>
-                ))
+                <ClubList data={m_data} type={'goal'}/>
             )
         }
         else if(props.sideRoute === 'shots'){
-            const final_data = m_data['shots'];
             return (
-                final_data.map((value)=>(
-                    <div>Season: {value['season']} Club: {value['club']} Shots: {value['shots']}</div>
-                ))
+                <ClubList data={m_data} type={'shots'}/>
             )
         }else if(props.sideRoute === 'predict'){
             const final_data = m_data['team'];

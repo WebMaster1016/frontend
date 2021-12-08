@@ -9,6 +9,8 @@
     "@mui/material": "^5.2.2",
     "@mui/system": "^5.2.2",
     "@mui/x-data-grid": "^5.1.0",
+    "@nivo/core": "^0.74.0",
+    "@nivo/line": "^0.74.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -19,6 +21,7 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "react-window": "^1.8.6",
     "redux": "^4.1.2",
     "web-vitals": "^1.0.1"
   },
