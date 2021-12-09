@@ -101,11 +101,6 @@ const SideBar = ( props) => {
             <nav aria-label="main mailbox folders">
                 <List>
                     <ListItem>
-                        <ListItemButton onClick={() => getPost()}>
-                            <ListItemText primary="Scrape Start" sx={{textAlign: "center"}} />
-                        </ListItemButton>
-                    </ListItem>
-                    <ListItem>
                         <ListItemButton onClick={() => win_view()}>
                             <ListItemText primary="Win" sx={{textAlign: "center"}} />
                         </ListItemButton>

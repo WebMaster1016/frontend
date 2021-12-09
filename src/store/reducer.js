@@ -1,8 +1,8 @@
-const initialState = {
+let initialState = {
     sideRoute: 'home',
     data: '',
     recentClub: '',
-    recentClubData: ''
+    recentClubData: []
 }
 
 const reducer = (state=initialState, action) => {
@@ -14,7 +14,6 @@ const reducer = (state=initialState, action) => {
       newState.data = myData['data']['data'];
   }else if(action.type === 'getClubData'){
       const myData = action.payload;
-      console.log(myData['recentClub'])
       newState.recentClub = myData['recentClub'];
       newState.recentClubData = myData['recentClubData'];
   }
